@@ -1,19 +1,26 @@
 package br.edu.unidavi.aula1;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
-@Entity
-public class Aluno {
-    @Id
-    @GeneratedValue
-    private Long id;
-    private String nome;
-    private double mensalidade;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
-    public Aluno(String nome, double mensalidade) {
+@XmlRootElement
+public class Aluno implements Serializable {
+
+    Long id;
+    String nome;
+    Integer matricula;
+    String email;
+
+    public Aluno(){
+        super();
+    }
+
+    public Aluno(Long id, String nome, Integer matricula, String email) {
+        super();
+        this.id = id;
         this.nome = nome;
-        this.mensalidade = mensalidade;
+        this.matricula = matricula;
+        this.email = email;
     }
 
     public Long getId() {
@@ -32,11 +39,19 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public double getMensalidade() {
-        return mensalidade;
+    public Integer getMatricula() {
+        return matricula;
     }
 
-    public void setMensalidade(double mensalidade) {
-        this.mensalidade = mensalidade;
+    public void setMatricula(Integer matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
